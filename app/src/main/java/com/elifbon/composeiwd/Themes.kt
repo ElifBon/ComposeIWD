@@ -17,9 +17,9 @@
 package com.example.jetnews.ui
 
 import androidx.ui.graphics.Color
-import androidx.ui.material.ColorPalette
+import androidx.ui.material.lightColorPalette
 
-val lightThemeColors = ColorPalette(
+val lightThemeColors = lightColorPalette(
     primary = Color(0xFF1EB980),
     surface = Color.DarkGray,
     onSurface = Color(0xFF1EB980)

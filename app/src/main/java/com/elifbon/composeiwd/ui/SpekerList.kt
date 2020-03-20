@@ -1,14 +1,16 @@
 package com.elifbon.composeiwd.ui
 
+import android.media.Image
 import androidx.compose.Composable
-import androidx.compose.unaryPlus
 import androidx.ui.core.Clip
 import androidx.ui.core.Text
-import androidx.ui.core.dp
+import androidx.ui.foundation.Box
+import androidx.ui.foundation.DrawBackground
 import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Image
+import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.*
+import androidx.ui.unit.dp
 import com.elifbon.composeiwd.model.SpeakerInfo
 import com.elifbon.composeiwd.themeTypography
 
@@ -24,13 +26,13 @@ fun SpeakerList(speakers: List<SpeakerInfo>){
 fun SpeakerInformation(speaker: SpeakerInfo) {
 
     Column(
-        modifier = Spacing(16.dp)
+        modifier = LayoutPadding(16.dp)
     ) {
         Image(image = speaker.image)
-        HeightSpacer(16.dp)
-        Title(title = speaker.name)
-        Subtitle(subtitle = speaker.title)
-        Body(speaker.sessionTitle)
+        Spacer(LayoutHeight(16.dp))
+        Text(speaker.name)
+        Text(speaker.title)
+        Text(speaker.sessionTitle)
     }
 }
 
@@ -53,11 +55,12 @@ fun Body(body: String) {
 }
 
 @Composable
-fun Image(image: Image) {
-    Container(modifier = Height(180.dp) wraps Expanded) {
+fun Image(image: androidx.ui.graphics.Image) {
+    Container(modifier = LayoutHeight(180.dp) + LayoutSize.Fill)  {
         Clip(RoundedCornerShape(5.dp)) {
             DrawImage(image = image)
         }
     }
+
 
 }
