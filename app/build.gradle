@@ -28,6 +28,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "$androidx_version" 
+    }
+
     buildFeatures {
         compose true
     }

@@ -1,13 +1,13 @@
 package com.elifbon.composeiwd.ui
 
-import android.media.Image
 import androidx.compose.Composable
 import androidx.ui.core.Clip
 import androidx.ui.core.Text
+import androidx.ui.core.toModifier
 import androidx.ui.foundation.Box
-import androidx.ui.foundation.DrawBackground
-import androidx.ui.foundation.DrawImage
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
+import androidx.ui.graphics.Image
+import androidx.ui.graphics.ScaleFit
 import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
@@ -28,7 +28,7 @@ fun SpeakerInformation(speaker: SpeakerInfo) {
     Column(
         modifier = LayoutPadding(16.dp)
     ) {
-        Image(image = speaker.image)
+        SpeakerImage(image = speaker.image)
         Spacer(LayoutHeight(16.dp))
         Text(speaker.name)
         Text(speaker.title)
@@ -55,12 +55,16 @@ fun Body(body: String) {
 }
 
 @Composable
-fun Image(image: androidx.ui.graphics.Image) {
-    Container(modifier = LayoutHeight(180.dp) + LayoutSize.Fill)  {
-        Clip(RoundedCornerShape(5.dp)) {
-            DrawImage(image = image)
+fun SpeakerImage(image: Image?) {
+
+  image?.let { image ->
+       val sizeModifier = LayoutHeight.Min(180.dp) + LayoutWidth.Fill
+        Container(modifier = sizeModifier) {
+           Clip(shape = RoundedCornerShape(5.dp)) {
+                val imageModifier = ImagePainter(image).toModifier(scaleFit = ScaleFit.FillWidth)
+                Box(modifier = sizeModifier + imageModifier)
+            }
         }
     }
-
 
 }

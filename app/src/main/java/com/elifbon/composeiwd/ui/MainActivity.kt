@@ -6,11 +6,15 @@ import androidx.compose.Composable
 import androidx.ui.core.setContent
 import androidx.ui.material.surface.Surface
 import androidx.ui.tooling.preview.Preview
+import com.elifbon.composeiwd.data.getSpeakersWithImagesLoaded
 import com.elifbon.composeiwd.data.speakerInfoList
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        speakerInfoList = getSpeakersWithImagesLoaded(speakerInfoList, resources)
+
         setContent {
             IWDDemoApp() {
                 Surface {

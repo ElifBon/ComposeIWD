@@ -8,5 +8,6 @@ data class SpeakerInfo(val id: Int,
                        val name: String,
                        val title: String,
                        val sessionTitle: String,
-                       val image: Image
+                       val imageId: Int,
+                       val image: Image? = null
 )
