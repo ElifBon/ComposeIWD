@@ -2,11 +2,12 @@ package com.elifbon.composeiwd.ui
 
 import androidx.compose.Composable
 import androidx.compose.Model
-import androidx.ui.core.Text
+import androidx.ui.core.Modifier
+import androidx.ui.foundation.Text
 import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
-import androidx.ui.layout.LayoutHeight
-import androidx.ui.layout.LayoutPadding
+import androidx.ui.layout.fillMaxHeight
+import androidx.ui.layout.padding
 import androidx.ui.material.Button
 import androidx.ui.material.Divider
 import androidx.ui.unit.dp
@@ -20,7 +21,7 @@ fun Counter(state: CounterState) {
         onClick = {
             state.count++
         },
-        modifier = LayoutPadding(24.dp)
+        modifier = Modifier.padding(24.dp)
     ){
         Text("I've been clicked ${state.count} times")
     }
@@ -28,7 +29,7 @@ fun Counter(state: CounterState) {
 
 @Composable
 fun Greeting(name: String) {
-    Text (text = "Hello $name!", modifier = LayoutPadding(24.dp))
+    Text (text = "Hello $name!", modifier = Modifier.padding(24.dp))
 }
 
 @Composable
@@ -36,8 +37,8 @@ fun StateSampleScreen(
     names: List<String> = listOf("Android", "there"),
     counterState: CounterState = CounterState()
 ) {
-    Column(modifier = LayoutHeight.Fill) {
-        Column(modifier = LayoutFlexible(1f)) {
+    Column(modifier = Modifier.fillMaxHeight()) {
+        Column(modifier = Modifier.weight(1f)) {
             for (name in names) {
                 Greeting(name = name)
                 Divider(color = Color.Black)

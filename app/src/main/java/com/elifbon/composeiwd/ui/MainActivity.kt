@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.setContent
-import androidx.ui.material.surface.Surface
+import androidx.ui.material.Surface
 import androidx.ui.tooling.preview.Preview
 import com.elifbon.composeiwd.data.getSpeakersWithImagesLoaded
 import com.elifbon.composeiwd.data.speakerInfoList
@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
-                /*Surface(color = Color.Yellow) {
-                    StateSampleScreen()
+               /* Surface  {
+                     StateSampleScreen()
 
                 }*/
 
@@ -41,7 +41,7 @@ fun defaultPreview(){
 
         }
 
-        /*Surface(color = Color.Yellow) {
+        /*Surface {
             StateSampleScreen()
 
         }*/

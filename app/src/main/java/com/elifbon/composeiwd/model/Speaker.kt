@@ -1,7 +1,7 @@
 package com.elifbon.composeiwd.model
 
 import androidx.compose.Model
-import androidx.ui.graphics.Image
+import androidx.ui.graphics.ImageAsset
 
 @Model
 data class SpeakerInfo(val id: Int,
@@ -9,5 +9,5 @@ data class SpeakerInfo(val id: Int,
                        val title: String,
                        val sessionTitle: String,
                        val imageId: Int,
-                       val image: Image? = null
+                       val image: ImageAsset? = null
 )

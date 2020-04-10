@@ -1,14 +1,13 @@
 package com.elifbon.composeiwd.ui
 
 import androidx.compose.Composable
-import androidx.ui.core.Clip
-import androidx.ui.core.Text
-import androidx.ui.core.toModifier
-import androidx.ui.foundation.Box
+import androidx.ui.core.Modifier
+import androidx.ui.core.clip
+import androidx.ui.foundation.Image
+import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Image
+import androidx.ui.graphics.ImageAsset
 import androidx.ui.graphics.ScaleFit
-import androidx.ui.graphics.painter.ImagePainter
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
 import com.elifbon.composeiwd.model.SpeakerInfo
@@ -26,10 +25,10 @@ fun SpeakerList(speakers: List<SpeakerInfo>){
 fun SpeakerInformation(speaker: SpeakerInfo) {
 
     Column(
-        modifier = LayoutPadding(16.dp)
+        modifier = Modifier.padding(16.dp)
     ) {
         SpeakerImage(image = speaker.image)
-        Spacer(LayoutHeight(16.dp))
+        Spacer(Modifier.preferredHeight(16.dp))
         Text(speaker.name)
         Text(speaker.title)
         Text(speaker.sessionTitle)
@@ -55,16 +54,16 @@ fun Body(body: String) {
 }
 
 @Composable
-fun SpeakerImage(image: Image?) {
+fun SpeakerImage(image: ImageAsset?) {
 
   image?.let { image ->
-       val sizeModifier = LayoutHeight.Min(180.dp) + LayoutWidth.Fill
-        Container(modifier = sizeModifier) {
-           Clip(shape = RoundedCornerShape(5.dp)) {
-                val imageModifier = ImagePainter(image).toModifier(scaleFit = ScaleFit.FillWidth)
-                Box(modifier = sizeModifier + imageModifier)
-            }
-        }
+
+      val imageModifier = Modifier
+          .preferredHeightIn(minHeight = 180.dp)
+          .fillMaxWidth()
+          .clip(shape = RoundedCornerShape(4.dp))
+      Image(image, modifier = imageModifier, scaleFit = ScaleFit.FillHeight)
+
     }
 
 }
