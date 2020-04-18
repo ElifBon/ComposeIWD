@@ -6,20 +6,36 @@ import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.ImageAsset
 import androidx.ui.layout.*
+import androidx.ui.material.Divider
+import androidx.ui.material.MaterialTheme
 import androidx.ui.unit.dp
 import com.elifbon.composeiwd.model.SpeakerInfo
 import com.elifbon.composeiwd.themeTypography
 
-/*
 @Composable
 fun SpeakerList(speakers: List<SpeakerInfo>){
-    ScrollingList(speakers) { speaker -> // Not available yet
-        SpeakerInformation(speaker)
+    VerticalScroller {
+        Column{
+            speakers.forEach{speaker -> 
+                SpeakerInformation(speaker = speaker)
+                SpeakerDivider()
+            }
+        }
     }
-}*/
+
+}
+@Composable
+private fun SpeakerDivider() {
+    Divider(
+        modifier = Modifier.padding(start = 72.dp, top = 8.dp, bottom = 8.dp),
+        color = MaterialTheme.colors.surface.copy(alpha = 0.08f)
+    )
+}
+
 
 @Composable
 fun SpeakerInformation(speaker: SpeakerInfo) {
@@ -59,7 +75,7 @@ fun SpeakerImage(image: ImageAsset?) {
   image?.let {
 
       val imageModifier = Modifier
-          .preferredHeightIn(minHeight = 180.dp)
+          .preferredHeightIn(maxHeight = 180.dp)
           .fillMaxWidth()
           .clip(shape = RoundedCornerShape(4.dp))
       Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)

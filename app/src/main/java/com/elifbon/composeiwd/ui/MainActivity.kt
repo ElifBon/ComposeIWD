@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             IWDDemoApp() {
                 Surface {
-                    SpeakerInformation(speakerInfoList[2])
+                    SpeakerList(speakerInfoList)
 
                 }
 
