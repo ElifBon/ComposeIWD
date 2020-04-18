@@ -1,13 +1,13 @@
 package com.elifbon.composeiwd.ui
 
 import androidx.compose.Composable
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.ImageAsset
-import androidx.ui.graphics.ScaleFit
 import androidx.ui.layout.*
 import androidx.ui.unit.dp
 import com.elifbon.composeiwd.model.SpeakerInfo
@@ -56,13 +56,13 @@ fun Body(body: String) {
 @Composable
 fun SpeakerImage(image: ImageAsset?) {
 
-  image?.let { image ->
+  image?.let {
 
       val imageModifier = Modifier
           .preferredHeightIn(minHeight = 180.dp)
           .fillMaxWidth()
           .clip(shape = RoundedCornerShape(4.dp))
-      Image(image, modifier = imageModifier, scaleFit = ScaleFit.FillHeight)
+      Image(image, modifier = imageModifier, contentScale = ContentScale.Crop)
 
     }
 
