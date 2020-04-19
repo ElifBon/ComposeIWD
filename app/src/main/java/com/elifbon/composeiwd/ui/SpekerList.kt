@@ -4,9 +4,9 @@ import androidx.compose.Composable
 import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.core.clip
+import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.Image
 import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
 import androidx.ui.foundation.shape.corner.RoundedCornerShape
 import androidx.ui.graphics.ImageAsset
 import androidx.ui.layout.*
@@ -18,13 +18,9 @@ import com.elifbon.composeiwd.themeTypography
 
 @Composable
 fun SpeakerList(speakers: List<SpeakerInfo>){
-    VerticalScroller {
-        Column{
-            speakers.forEach{speaker -> 
-                SpeakerInformation(speaker = speaker)
-                SpeakerDivider()
-            }
-        }
+
+    AdapterList(data = speakers) {
+        SpeakerInformation(speaker = it)
     }
 
 }
