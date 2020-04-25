@@ -21,10 +21,9 @@ fun Counter(state: CounterState) {
         onClick = {
             state.count++
         },
-        modifier = Modifier.padding(24.dp)
-    ){
-        Text("I've been clicked ${state.count} times")
-    }
+        modifier = Modifier.padding(24.dp),
+        text = { Text(text = "I've been clicked ${state.count} times") }
+    )
 }
 
 @Composable
